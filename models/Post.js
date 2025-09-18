@@ -1,6 +1,7 @@
 //Criação da tabela Post
 
 const db = require('./db');
+const User = require('../models/User');
 //Ligação com o arquivo do banco
 
 const Post = db.sequelize.define('postagens', {
@@ -9,9 +10,16 @@ const Post = db.sequelize.define('postagens', {
     },
     conteudo: {
         type: db.Sequelize.TEXT
-    }
+    },
+    fk_user: {
+        type: db.Sequelize.INTEGER,
+        foreignKey: true
+    } 
 });
 
-Post.sync({force:true});
+//O sequelize por padrão associa as fk ao id da outra tabela
+User.hasMany(Post, {foreignKey: 'fk_user'});
+
+Post.sync({force:false});
 
 module.exports = Post;
