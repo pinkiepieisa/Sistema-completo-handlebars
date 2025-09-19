@@ -17,9 +17,12 @@ const Post = db.sequelize.define('postagens', {
     } 
 });
 
+/*
 //O sequelize por padrão associa as fk ao id da outra tabela
-User.hasMany(Post, {foreignKey: 'fk_user'});
+//Relacionamento com a tabela users
+Post.belongsTo(User, { foreignKey: 'fk_user'});
+*/
 
-Post.sync({force:false});
+Post.sync({force:true});
 
 module.exports = Post;

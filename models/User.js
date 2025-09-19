@@ -1,5 +1,6 @@
 //Criação da tabela dos usuários
 const db = require('./db');
+const Post = require('./Post')
 
 const User = db.sequelize.define('user', {
     nome: {
@@ -16,6 +17,11 @@ const User = db.sequelize.define('user', {
     }
 });
 
-User.sync({force: false});
+/*
+//Relacionamento com a tabela postagens
+User.hasMany(Post, {foreignKey: 'fk_user'});
+*/
+
+User.sync({force: true});
 
 module.exports = User;
