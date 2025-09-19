@@ -35,4 +35,19 @@ router.post('/cad', function (req, res) {
     .catch(erro => res.send('Houve um erro: ' + erro));
 });
 
+router.post('/login', function (req, res) {
+    User.findOne({ 
+        where: { 
+            email: req.body.email,
+            senha: req.body.senha, 
+        }
+    }).then((user) => {
+        if(user) {
+            res.redirect('/postagens');
+        } else {
+            res.send("E-mail ou senha inválidos");
+        }
+    }).catch(() => res.send("Erro ao logar!"));
+});
+
 module.exports = router;
