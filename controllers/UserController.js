@@ -3,10 +3,13 @@ const router = express.Router();
 const User = require('../models/User.js');
 
 //Rotas do User
+
+//Rota para a página inicial
 router.get('/', function(req, res) {
-    res.render('home');
+    res.render('inicial');
 });
 
+//Rota para a página do cadastro
 router.get('/cad', function (req, res) {
     res.render('cadastro');
 });
@@ -22,12 +25,25 @@ router.post('/cad', function (req, res) {
     .catch(erro => res.send('Houve um erro: ' + erro));
 });
 
+//Rota para o login
 router.get('/login', function(req, res) {
     res.render('login');
-})
+});
+
+//Rota para a home
+router.get('/home', function(req, res) {
+    res.render('home');
+});
 
 router.post('/login', function(req, res) {
-    User.findAll({ where: { email: req.params.email }} && { where: { senha: req.params.senha }})
+    User.findAll(
+        { 
+            where: { email: req.params.email }
+        } 
+        &&
+        { 
+            where: { senha: req.params.senha }
+        })
     .then(() => redirect('/home/postagens'))
     .catch(() => res.send("Esse usuário não existe!"));
 });

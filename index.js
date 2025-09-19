@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 //Usando rotas 
 app.use('/postagens', rota_post);
-app.use('/home', rota_user);
+app.use('/', rota_user);
 
 app.listen(8081, function() {
     console.log("Servidor rodando na porta 8081!")
