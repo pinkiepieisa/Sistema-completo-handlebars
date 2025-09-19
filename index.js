@@ -4,7 +4,7 @@ const app = express();
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const rota_post = require('./controllers/PostagensController.js');
-const rota_user = require('./controllers/UserController.js')
+const rota_user = require('./controllers/UserController.js');
 
 //Configurando o handlebars
 app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));

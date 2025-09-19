@@ -3,6 +3,19 @@ const router = express.Router();
 const Post = require('../models/Post.js');
 
 //Rotas do Post
+//Exibir as postagens
+router.get('/', function(req, res) {
+    Post.findAll().then(function(posts) {
+        posts = posts.map(post => post.toJSON());
+        res.render('postagens', {posts: posts});
+    });
+});
+
+// Rota para o formulário de cadastro
+router.get('/cad', function (req, res) {
+    res.render('post');
+});
+
 
 //Rota para adicionar post
 router.post('/add', function (req, res) {
