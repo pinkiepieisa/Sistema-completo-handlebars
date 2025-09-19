@@ -1,19 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post.js');
-const User = require('../models/User.js');
-
-//Rota principal
-router.get('/', function(req, res) {
-    res.render('home');
-});
-
-//Rotas do User
-
-// Rota para o formulário de cadastro
-router.get('/cadastro', function (req, res) {
-    res.render('cadastro');
-});
 
 //Rotas do Post
 
